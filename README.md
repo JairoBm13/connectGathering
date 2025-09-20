@@ -21,10 +21,10 @@ Common Ground automatically creates communities based on users’ selected inter
 * Automatic group creation based on interests
 
 ## Used Technologies
-* The Backend:
+* The backend:
   * Go
   * MongoDB
-* The Frontend:
+* The brontend:
   * JavaScript
   * React
   * Vite
