@@ -21,6 +21,14 @@ Common Ground automatically creates communities based on users’ selected inter
 * User verification based on Driver's License/SSN/Business ID/Passport
 * Automatic group creation based on interests
 
+## How to Run
+
+1. Download the repo as a .zip.
+2. Decompress the .zip folder.
+3. `cd` to this folder.
+4. Run `pnpm run dev` or `pnpm run build`.
+5. View the program on [http://localhost:5173](http://localhost:5173).
+
 ## Used Technologies
 * The backend:
   * Go
@@ -46,11 +54,10 @@ Common Ground automatically creates communities based on users’ selected inter
 * Create a product logo.
 
 ## Team
-* [Antonio Del Campo](https://www.linkedin.com/in/antonio-del-campo/), Team Software Engineer
 * [Emilio Bautista](https://www.linkedin.com/in/jairobautistam/), Team Software Engineer
 * [Ethan Landers](https://www.linkedin.com/in/ethanlanders/), Team Operational Manager
 * [Frank Roberge](https://www.linkedin.com/in/frank-roberge/), Team Software Engineer
 * [Michael Cartagena](https://www.linkedin.com/in/mcartaofficial/), Team Project Manager
 
-# Acknowledgement
+## Acknowledgement
 Thank you to South Florida Tech Hub, City Furniture, FPL, NextEra, Rebecca Bakels, Imran Siddiqui, Ashton Adler, and all the volunteers and coaches for hosting the 2025 South Florida Hackathon and providing invaluable opportunities for learning and support.
