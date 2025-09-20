@@ -1,9 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Button } from "./ui/button";
-// import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
-import { CommunityGrid } from "./CommunityGrid";
 import EventFeed from "./EventFeed";
 import CommunityDetail from "./CommunityDetail";
 import { Users, Calendar } from "lucide-react";
@@ -80,6 +77,24 @@ const MOCK_FEED_EVENTS = [
 
 function Dashboard({ user, setUser }) {
   const [selectedCommunity, setSelectedCommunity] = useState(null);
+  const [communities, setCommunites] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/communities");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        console.log(jsonData);
+        setCommunites(jsonData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   if (selectedCommunity) {
     return (
@@ -113,9 +128,6 @@ function Dashboard({ user, setUser }) {
                 {user.location} • {user.interests.length} interests
               </p>
             </div>
-            {/* <Button variant="outline" size="icon">
-              <Settings className="h-4 w-4" />
-            </Button> */}
           </div>
           <div className="flex gap-2">
             {user.interests.slice(0, 3).map((interest) => (

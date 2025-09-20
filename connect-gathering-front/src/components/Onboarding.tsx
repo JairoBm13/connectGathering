@@ -6,57 +6,24 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { MapPin } from "lucide-react";
 
-import axios from "axios";
-
-const POPULAR_INTERESTS = [
-  "Photography",
-  "Hiking",
-  "Coffee",
-  "Tech",
-  "Art",
-  "Music",
-  "Food",
-  "Gaming",
-  "Fitness",
-  "Books",
-  "Travel",
-  "Cooking",
-  "Dancing",
-  "Sports",
-  "Movies",
-  "Pets",
-];
-
 function Onboarding({ onComplete }) {
   const [availableInterests, setAvailableInterests] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://cd1bd1f2761e.ngrok-free.app/interests",
-  //         {
-  //           headers: {
-  //             "ngrok-skip-browser-warning": "69420"
-  //           },
-  //         }
-
-  //       );
-  //       console.log(response);
-  //       // Replace with your API endpoint
-  //       // if (!response.ok) {
-  //       //   throw new Error(`HTTP error! status: ${response.status}`);
-  //       // }
-  //       // const jsonData = await response.json();
-  //       // console.log(jsonData);
-  //       // console.log(jsonData)
-  //       // setAvailableInterests(jsonData);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/interests");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setAvailableInterests(jsonData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
@@ -65,20 +32,56 @@ function Onboarding({ onComplete }) {
 
   const toggleInterest = (interest) => {
     setInterests((prev) =>
-      prev.includes(interest)
-        ? prev.filter((i) => i !== interest)
+      prev.includes(interest.id)
+        ? prev.filter((i) => i.id !== interest.id)
         : [...prev, interest]
     );
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/communities", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(interests),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      console.log(jsonData);
+      // Optionally update state here if needed
+    } catch (error) {
+      console.log(error);
+    }
     const userData = {
       name,
       location,
-      interests,
+      "interests": interests.map(toMap => toMap.name),
       id: Date.now().toString(),
       joinedCommunities: [],
     };
+
+    try {
+      const response = await fetch("http://localhost:8080/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const jsonData = await response.json();
+      console.log(jsonData);
+      // Optionally update state here if needed
+    } catch (error) {
+      console.log(error);
+    }
+
     onComplete(userData);
   };
   return (
@@ -142,16 +145,16 @@ function Onboarding({ onComplete }) {
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {POPULAR_INTERESTS.map((interest) => (
+                {availableInterests.map((interest) => (
                   <Badge
-                    key={interest}
+                    key={interest.id}
                     variant={
-                      interests.includes(interest) ? "default" : "outline"
+                      interests.includes(interest.id) ? "default" : "outline"
                     }
                     className="cursor-pointer justify-center py-2"
                     onClick={() => toggleInterest(interest)}
                   >
-                    {interest}
+                    {interest.name}
                   </Badge>
                 ))}
               </div>
@@ -161,8 +164,8 @@ function Onboarding({ onComplete }) {
                   <Label>Selected Interests:</Label>
                   <div className="flex flex-wrap gap-2">
                     {interests.map((interest) => (
-                      <Badge key={interest} variant="secondary">
-                        {interest}
+                      <Badge key={interest.id} variant="secondary">
+                        {interest.name}
                       </Badge>
                     ))}
                   </div>

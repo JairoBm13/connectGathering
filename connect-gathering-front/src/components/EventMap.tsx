@@ -1,6 +1,7 @@
 import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { MapPin, Calendar, Clock } from 'lucide-react';
+import map from '../assets/map.png'
 
 function EventMap({ events }) {
   // This is a simplified map visualization
@@ -20,7 +21,7 @@ function EventMap({ events }) {
                 <div>
                   <h3>Interactive Map</h3>
                   <p className="text-muted-foreground text-sm">
-                    Map integration would show event locations here
+                    <img src={map} />
                   </p>
                 </div>
               </div>

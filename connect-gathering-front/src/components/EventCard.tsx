@@ -4,20 +4,27 @@ import { Badge } from "./ui/badge";
 import { Heart, MapPin, Calendar, Clock, User } from "lucide-react";
 import VoteEventDialog from "./VoteEventDialog";
 import { useState } from "react";
+import verify from "../assets/oip.jpg";
 
 function EventCard({ event, user }) {
   const [showVoteEvent, setShowVoteEvent] = useState(false);
   const [thisEvent, setEvent] = useState(event);
   const onVote = (data) => {
-    // data.votes = data.votes + 1;
+    data.vote++;
     setEvent(data);
     setShowVoteEvent(false);
-    console.log("vote dones")
+    console.log("vote dones");
   };
 
   const handleVoteEvent = (eventId) => {
-    console.log("handle")
+    console.log("handle");
+    setShowVoteEvent(true);
   };
+
+  const stylessize = {
+    width: "25px",
+    height: "25px"
+  }
   return (
     <Card key={event.id} className="p-6">
       <div className="space-y-4">
@@ -30,6 +37,7 @@ function EventCard({ event, user }) {
               >
                 {event.status === "confirmed" ? "Confirmed" : "Voting"}
               </Badge>
+              <img src={verify} style={stylessize}/>
             </div>
             <p className="text-muted-foreground">{event.description}</p>
           </div>
@@ -69,7 +77,7 @@ function EventCard({ event, user }) {
                 event={event}
               />
               <Heart className="h-4 w-4" />
-              {event.votes} vote
+              vote
             </Button>
             {event.status === "voting" && (
               <div className="text-sm text-muted-foreground">

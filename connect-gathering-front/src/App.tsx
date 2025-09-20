@@ -8,6 +8,7 @@ function App() {
 
   const handleOnboardingComplete = (userData) => {
     setUser(userData);
+    console.log(userData)
     setIsOnboarded(true);
   };
 
