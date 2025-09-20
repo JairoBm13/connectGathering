@@ -18,6 +18,7 @@ Common Ground automatically creates communities based on users’ selected inter
 * Web application
 * User-friendly registration
 * Database of users, events, and groups
+* User verification based on Driver's License/SSN/Business ID/Passport
 * Automatic group creation based on interests
 
 ## Used Technologies
@@ -40,7 +41,7 @@ Common Ground automatically creates communities based on users’ selected inter
 * Expand event planning features.
 * Implement event notifications for users.
 * Develop richer social features, such as chat and message boards.
-* Verify users, events, locations.
+* Verify events and locations.
 * Explore monetization strategies (e.g., ads, partnerships).
 * Create a product logo.
 
