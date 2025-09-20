@@ -1,13 +1,20 @@
-//import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import  Onboarding  from './components/Onboarding';
+import Dashboard from "./components/Dashboard";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [isOnboarded, setIsOnboarded] = useState(false);
 
-  return (
-    <>
+  const handleOnboardingComplete = (userData) => {
+    setUser(userData);
+    setIsOnboarded(true);
+  };
 
-    </>
-  )
+  if (!isOnboarded) {
+    return <Onboarding onComplete={handleOnboardingComplete} />;
+  }
+  return <Dashboard user={user} setUser={setUser}/>
 }
 
-export default App
+export default App;
