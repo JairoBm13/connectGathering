@@ -17,23 +17,29 @@ There are currently several websites/apps on the market which intend to resolve 
 * Facebook Groups
 * Eventbrite
 
-Yet these apps each have a bottleneck which our solution, **Common Ground**, intends to resolve. 
+Yet these apps each have their own bottleneck which our solution, **Common Ground**, intends to resolve.
 
 ## Proposed Solution
 
-
+Our solution consists of having the application put users into communities based on their interests they selected and their geographic location.
 
 ## Key Characteristics
-* 
+* Web application
+* Database of users, events, and groups
+* Automatic group creation based on interests
 
 ## Used Technologies
-* Backend
+* The backend:
   * Go
   * MongoDB
-* Frontend
+* The frontend:
   * JavaScript
   * React
   * Vite
+
+# Future Work
+
+Matchmaking based on factors like gender, age, etc. in addition to the apps current ability to match on interests.
 
 ## Team
 * [Antonio Del Campo](https://www.linkedin.com/in/antonio-del-campo/)
