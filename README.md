@@ -18,7 +18,6 @@ Common Ground automatically creates communities based on users’ selected inter
 * Web application
 * User-friendly registration
 * Database of users, events, and groups
-* User verification based on Driver's License/SSN/Business ID/Passport
 * Automatic group creation based on interests
 
 ## How to Run
