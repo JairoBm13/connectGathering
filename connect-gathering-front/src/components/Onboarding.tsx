@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -6,12 +6,58 @@ import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { MapPin } from "lucide-react";
 
+import axios from "axios";
+
 const POPULAR_INTERESTS = [
-  'Photography', 'Hiking', 'Coffee', 'Tech', 'Art', 'Music', 'Food', 'Gaming',
-  'Fitness', 'Books', 'Travel', 'Cooking', 'Dancing', 'Sports', 'Movies', 'Pets'
+  "Photography",
+  "Hiking",
+  "Coffee",
+  "Tech",
+  "Art",
+  "Music",
+  "Food",
+  "Gaming",
+  "Fitness",
+  "Books",
+  "Travel",
+  "Cooking",
+  "Dancing",
+  "Sports",
+  "Movies",
+  "Pets",
 ];
 
 function Onboarding({ onComplete }) {
+  const [availableInterests, setAvailableInterests] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://cd1bd1f2761e.ngrok-free.app/interests",
+  //         {
+  //           headers: {
+  //             "ngrok-skip-browser-warning": "69420"
+  //           },
+  //         }
+
+  //       );
+  //       console.log(response);
+  //       // Replace with your API endpoint
+  //       // if (!response.ok) {
+  //       //   throw new Error(`HTTP error! status: ${response.status}`);
+  //       // }
+  //       // const jsonData = await response.json();
+  //       // console.log(jsonData);
+  //       // console.log(jsonData)
+  //       // setAvailableInterests(jsonData);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -143,4 +189,4 @@ function Onboarding({ onComplete }) {
   );
 }
 
-export default Onboarding
+export default Onboarding;

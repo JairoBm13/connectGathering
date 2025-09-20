@@ -61,7 +61,7 @@ const MOCK_FEED_EVENTS = [
     title: "Coffee Cupping Session",
     description: "Learn about different coffee origins and flavors",
     community: "SF Coffee Lovers",
-    interests: ["Coffee", "Food"],
+    interests: ["Art", "Food"],
     date: "2024-10-18",
     votes: 15,
     location: "Mission District, SF",

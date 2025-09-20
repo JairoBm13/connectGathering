@@ -1,13 +1,20 @@
-import { useState } from 'react';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import EventMap  from './EventMap';
-import EventList  from './EventList';
-import CreateEventDialog from './CreateEventDialog';
-import CommunityChat  from './CommunityChat';
-import { ArrowLeft, Users, MapPin, Plus, Calendar, Map, MessageCircle } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import EventMap from "./EventMap";
+import EventList from "./EventList";
+import CreateEventDialog from "./CreateEventDialog";
+import CommunityChat from "./CommunityChat";
+import {
+  ArrowLeft,
+  Users,
+  MapPin,
+  Plus,
+  Calendar,
+  Map,
+  MessageCircle,
+} from "lucide-react";
 
 function CommunityDetail({ community, user, onBack }) {
   const [showCreateEvent, setShowCreateEvent] = useState(false);
@@ -17,20 +24,12 @@ function CommunityDetail({ community, user, onBack }) {
     const event = {
       ...newEvent,
       id: Date.now().toString(),
-      proposedBy: 'You',
+      proposedBy: "You",
       votes: 1,
-      status: 'voting'
+      status: "voting",
     };
-    setEvents(prev => [...prev, event]);
+    setEvents((prev) => [...prev, event]);
     setShowCreateEvent(false);
-  };
-
-  const handleVote = (eventId) => {
-    setEvents(prev => prev.map(event => 
-      event.id === eventId 
-        ? { ...event, votes: event.votes + 1 }
-        : event
-    ));
   };
 
   return (
@@ -44,16 +43,14 @@ function CommunityDetail({ community, user, onBack }) {
             </Button>
             <div className="flex-1">
               <h1>{community.name}</h1>
-              <p className="text-muted-foreground">
-                {community.description}
-              </p>
+              <p className="text-muted-foreground">{community.description}</p>
             </div>
             <Button onClick={() => setShowCreateEvent(true)}>
               <Plus className="h-4 w-4 mr-2" />
               Propose Event
             </Button>
           </div>
-          
+
           <div className="mt-4 flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-muted-foreground" />
@@ -91,24 +88,17 @@ function CommunityDetail({ community, user, onBack }) {
               Chat
             </TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="events">
-            <EventList 
-              events={events}
-              onVote={handleVote}
-              user={user}
-            />
+            <EventList events={events} user={user} />
           </TabsContent>
-          
+
           <TabsContent value="map">
             <EventMap events={events} />
           </TabsContent>
-          
+
           <TabsContent value="chat">
-            <CommunityChat 
-              community={community}
-              user={user}
-            />
+            <CommunityChat community={community} user={user} />
           </TabsContent>
         </Tabs>
       </div>
@@ -122,4 +112,4 @@ function CommunityDetail({ community, user, onBack }) {
   );
 }
 
-export default CommunityDetail
+export default CommunityDetail;
