@@ -1,0 +1,92 @@
+### Create a new user
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "name": "Frank",
+  "email": "frank@example.com",
+  "role": "volunteer"
+}
+
+###
+
+### Get all users
+GET http://localhost:8080/users
+
+###
+
+### Create a new event
+POST http://localhost:8080/events
+Content-Type: application/json
+
+{
+  "title": "Senior Wellness Fair",
+  "date": "2025-10-15",
+  "details": "Free screenings and workshops for older adults"
+}
+
+###
+
+### Get all events
+GET http://localhost:8080/events
+
+###
+
+### Update an event (replace {id} with actual event ID)
+PUT http://localhost:8080/events/68ce7741e63f16ff842f4bfb
+Content-Type: application/json
+
+{
+  "title": "Updated Wellness Fair",
+  "date": "2025-10-20",
+  "details": "Updated details for the event"
+}
+
+###
+
+### Delete an event (replace {id} with actual event ID)
+DELETE http://localhost:8080/events/{{eventId}}
+
+###
+
+### Create a vote
+POST http://localhost:8080/votes
+Content-Type: application/json
+
+{
+  "eventId": "68ce7741e63f16ff842f4bfb",
+  "userId": "68ce770fe63f16ff842f4bfa",
+  "vote": "yes"
+}
+
+###
+
+### Get all votes
+GET http://localhost:8080/votes
+
+###
+
+### Send a prompt to Gemini
+POST http://localhost:8080/gemini
+Content-Type: application/json
+
+{
+  "prompt": "What are some senior-friendly tech workshops?"
+}
+
+
+
+### Create a new interest
+POST http://localhost:8080/interests
+Content-Type: application/json
+
+{
+  "name": "Cats"
+  }
+
+###
+
+### Get all interests
+GET http://localhost:8080/interests
+
+###
