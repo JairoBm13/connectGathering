@@ -53,10 +53,10 @@ Common Ground automatically creates communities based on users’ selected inter
 * Create a product logo.
 
 ## Team
-* [Emilio Bautista](https://www.linkedin.com/in/jairobautistam/), Team Software Engineer
-* [Ethan Landers](https://www.linkedin.com/in/ethanlanders/), Team Operational Manager
-* [Frank Roberge](https://www.linkedin.com/in/frank-roberge/), Team Software Engineer
-* [Michael Cartagena](https://www.linkedin.com/in/mcartaofficial/), Team Project Manager
+* [Emilio Bautista](https://www.linkedin.com/in/jairobautistam/): Contributed to frontend and backend features, API connection.
+* [Ethan Landers](https://www.linkedin.com/in/ethanlanders/): Wrote project documentation, contributed to ideation, pitched project.
+* [Frank Roberge](https://www.linkedin.com/in/frank-roberge/): Built backend services in Go, integrated with MongoDB.
+* [Michael Cartagena](https://www.linkedin.com/in/mcartaofficial/): Drafted project slides, contributed to ideation, ensured project delivery.
 
 ## Acknowledgement
 Thank you to South Florida Tech Hub, City Furniture, FPL, NextEra, Rebecca Bakels, Imran Siddiqui, Ashton Adler, and all the volunteers and coaches for hosting the 2025 South Florida Hackathon and providing invaluable opportunities for learning and support.
